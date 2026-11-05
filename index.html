@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+
+<title>YOUTH VOICE UZ — Every Voice Matters</title>
+
+<meta name="description" content="A youth-led civic technology platform empowering young people across Uzbekistan to report community issues, share ideas and create positive change.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #2457D6;
+    --dark: #17233B;
+    --light: #F4F7FC;
+    --text: #28354B;
+    --muted: #7B8799;
+    --border: #E7EBF2;
+}
+
+body {
+    font-family: Inter, Arial, sans-serif;
+    background: var(--light);
+    color: var(--text);
+}
+
+header {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar {
+    max-width: 1250px;
+    margin: auto;
+    padding: 15px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 19px;
+    color: var(--dark);
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--blue);
+    color: white;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 21px;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--blue);
+}
+
+.nav-button {
+    background: var(--blue);
+    color: white;
+    padding: 12px 19px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.container {
+    max-width: 1180px;
+    margin: auto;
+    padding: 35px 22px;
+}
+
+.hero {
+    background: linear-gradient(125deg, #173B91, #2868E8);
+    border-radius: 22px;
+    padding: 65px 55px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "VOICE";
+    position: absolute;
+    right: -20px;
+    bottom: -30px;
+    font-size: 125px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.07);
+}
+
+.tag {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    padding: 9px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 23px;
+}
+
+.hero h1 {
+    font-size: clamp(35px, 5vw, 58px);
+    line-height: 1.12;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 600px;
+    color: #E3ECFF;
+}
+
+.hero-actions {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.primary-button {
+    background: white;
+    color: var(--blue);
+    padding: 15px 22px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.secondary-button {
+    border: 1px solid rgba(255,255,255,.6);
+    color: white;
+    padding: 15px 22px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.section-title {
+    margin: 45px 0 20px;
+}
+
+.section-title h2 {
+    font-size: 25px;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+    margin-top: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 30px;
+    color: var(--blue);
+    margin-bottom: 8px;
+}
+
+.stat-card span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.feature {
+    background: white;
+    padding: 27px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.feature-icon {
+    font-size: 27px;
+    margin-bottom: 17px;
+}
+
+.feature h3 {
+    color: var(--dark);
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.feature p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.report-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.report-box h2 {
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+form {
+    display: grid;
+    gap: 15px;
+    margin-top: 22px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font: inherit;
+    margin-top: 7px;
+    background: white;
+}
+
+textarea {
+    min-height: 115px;
+    resize: vertical;
+}
+
+.submit-button {
+    background: var(--blue);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.notice {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+footer {
+    background: #15233D;
+    color: white;
+    padding: 35px 22px;
+    margin-top: 55px;
+}
+
+.footer-inner {
+    max-width: 1180px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+footer p {
+    color: #AEBBD0;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+@media(max-width: 750px) {
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .logo {
+        font-size: 15px;
+    }
+
+    .hero {
+        padding: 42px 25px;
+    }
+
+    .hero::after {
+        font-size: 65px;
+    }
+
+    .stats, .features {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 22px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="navbar">
+
+    <div class="logo">
+        <div class="logo-icon">Y</div>
+        YOUTH VOICE UZ
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#mission">Our Mission</a>
+        <a href="#impact">Our Impact</a>
+    </nav>
+
+    <a href="#report" class="nav-button">Get Involved</a>
+
+</div>
+</header>
+
+<main class="container">
+
+<section class="hero" id="home">
+
+    <div class="tag">YOUTH-LED CIVIC TECHNOLOGY</div>
+
+    <h1>
+        Every Young Voice
+        Deserves to Be Heard.
+    </h1>
+
+    <p>
+        Empowering the next generation to identify
+        community challenges, share ideas and
+        contribute to meaningful change across Uzbekistan.
+    </p>
+
+    <div class="hero-actions">
+        <a href="#report" class="primary-button">
+            Report an Issue →
+        </a>
+
+        <a href="#about" class="secondary-button">
+            Discover Our Mission
+        </a>
+    </div>
+
+</section>
+
+<section id="impact">
+
+    <div class="section-title">
+        <h2>A Platform for Change</h2>
+        <p>
+            Connecting young people with the future
+            of their communities.
+        </p>
+    </div>
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <strong>01</strong>
+            <span>One shared mission</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>100%</strong>
+            <span>Youth participation at the heart of our vision</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>UZ</strong>
+            <span>Building a better Uzbekistan</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="about">
+
+    <div class="section-title">
+        <h2>What Is YOUTH VOICE UZ?</h2>
+        <p>
+            Technology meets youth participation.
+        </p>
+    </div>
+
+    <div class="features">
+
+        <article class="feature">
+            <div class="feature-icon">🗣️</div>
+            <h3>Speak Up</h3>
+            <p>
+                Young people can express their concerns,
+                ideas and perspectives about their communities.
+            </p>
+        </article>
+
+        <article class="feature">
+            <div class="feature-icon">💡</div>
+            <h3>Identify Problems</h3>
+            <p>
+                Highlight local challenges and help
+                bring important community issues into focus.
+            </p>
+        </article>
+
+        <article class="feature">
+            <div class="feature-icon">🌍</div>
+            <h3>Create Impact</h3>
+            <p>
+                Encourage collaboration, civic awareness
+                and youth-led solutions for positive change.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+<section id="mission">
+
+    <div class="section-title">
+        <h2>Our Mission</h2>
+        <p>
+            We believe young people should not only
+            observe change. They should have an opportunity
+            to participate in creating it.
+        </p>
+    </div>
+
+</section>
+
+<section id="report">
+
+    <div class="report-box">
+
+        <h2>Report a Community Issue</h2>
+
+        <p class="notice">
+            Share a community concern through this
+            demonstration form.
+        </p>
+
+        <form id="issueForm">
+
+            <div>
+                <label for="category">Issue Category</label>
+                <select id="category" required>
+                    <option value="">Select a category</option>
+                    <option>Education</option>
+                    <option>Public Transport</option>
+                    <option>Environment</option>
+                    <option>Public Spaces</option>
+                    <option>Community Safety</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="city">City or Region</label>
+                <input id="city" type="text"
+                placeholder="Example: Tashkent" required>
+            </div>
+
+            <div>
+                <label for="description">Describe the Issue</label>
+                <textarea id="description"
+                placeholder="Explain the community issue..."
+                required maxlength="1000"></textarea>
+            </div>
+
+            <button class="submit-button" type="submit">
+                Submit Demonstration
+            </button>
+
+            <p class="notice">
+                Demonstration only: this form does not transmit
+                or store submissions. Do not enter names,
+                contact details or sensitive personal information.
+            </p>
+
+        </form>
+
+        <p id="result" role="status"
+        style="margin-top:15px;color:#2457D6;font-weight:600;">
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+<div class="footer-inner">
+
+    <div>
+        <h3>YOUTH VOICE UZ</h3>
+        <p>Every young voice deserves to be heard.</p>
+    </div>
+
+    <div>
+        <p>Youth Empowerment • Technology • Social Impact</p>
+        <p>© 2026 YOUTH VOICE UZ</p>
+    </div>
+
+</div>
+</footer>
+
+<script>
+document.getElementById("issueForm").addEventListener(
+    "submit", function(event) {
+
+    event.preventDefault();
+
+    document.getElementById("result").textContent =
+        "Thank you! This is a demonstration. " +
+        "Your submission has not been transmitted or saved.";
+
+    this.reset();
+});
+</script>
+
+</body>
+  </html>
